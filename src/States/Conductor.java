@@ -12,8 +12,8 @@ public class Conductor implements State {
     }
 
     @Override
-    public State nextState (int heads) {
-        if (heads == 1 || heads == 2) {
+    public State nextState (int headsNumber) {
+        if (headsNumber == 1 || headsNumber == 2) {
             return new Head();
         } else {
             return new Conductor();

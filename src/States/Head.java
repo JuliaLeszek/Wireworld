@@ -10,7 +10,7 @@ public class Head implements State{
     }
 
     @Override
-    public State nextState(int heads){
+    public State nextState(int headsNumber){
         return new Tail();
     }
 }

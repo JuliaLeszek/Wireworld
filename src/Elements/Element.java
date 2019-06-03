@@ -2,6 +2,6 @@ package Elements;
 
 public interface Element {
 
-    //public void  setElementOnBoard(int i, int j, generation generation);
+    //public void  setElementOnBoard(int x, int y, generation generation);
 
 }
