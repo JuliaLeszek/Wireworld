@@ -1,5 +1,6 @@
 package Elements;
 
+import CA.Generation;
 import States.Isolator;
 import States.State;
 
@@ -16,6 +17,18 @@ public class Cell implements Element {
     public Cell () {
         state = new Isolator();
     }
+
+    /* Zwraca następny stan komórki*/
+    public void nextState (int headsNumber) {
+        state = state.nextState(headsNumber);
+    }
+
+    /* */
+    @Override
+    public void  setElementOnBoard(int x, int y, Generation generation){
+        generation.setCellState (x, y, state);
+    }
+
 
     /*Gettery i Settery*/
     public String getStateString() {

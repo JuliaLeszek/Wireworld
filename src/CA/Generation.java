@@ -1,6 +1,8 @@
 package CA;
 
 import Elements.Cell;
+import Elements.Element;
+import Elements.ElementFactory;
 import States.Isolator;
 import States.State;
 
@@ -26,7 +28,7 @@ public class Generation {
         Generation generation = new Generation(this.height, this.width);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                board[i][j].setState((getCell(i,j).getState()));
+                generation.setElementOnBoard(i, j, ElementFactory.buildElement(getCell(i, j).getStateString()));
             }
         } return generation;
     }
@@ -46,7 +48,7 @@ public class Generation {
         int result = 0;
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
-                if ("Head".equals(getCell(i, j).getState())) {
+                if ("Head".equals(getCell(i, j).getStateString())) {
                     result++;
                 }
             }
@@ -62,10 +64,22 @@ public class Generation {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 headsNumber = getHeadsNumber(i, j);
-                next.board[i][j].setState((getCell(i,j).getState()));
+                next.board[i][j].nextState(headsNumber);
             }
         }
         return next;
+    }
+
+    /*Dodaj element do tablicy*/
+    public void setElementOnBoard  (int i, int j, Element element) {
+        element.setElementOnBoard(i,j, this);
+    }
+
+    /*Method that sets the state of given cell; i - row, j - col*/
+    public void setCellState (int i, int j, State state) {
+        if ( i < height && i >= 0 && j < width && j >= 0) {
+            board[i][j].setState(state);
+        }
     }
 
 
