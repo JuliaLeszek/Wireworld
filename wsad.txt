@@ -1,0 +1,49 @@
+75 75
+Conductor 6 6
+
+Conductor 7 6
+
+
+Conductor 8 6
+
+Tail 9 6
+
+Head 10 6
+
+Conductor 11 6
+
+Conductor 12 6
+
+Conductor 13 6
+
+
+Conductor 14 6
+
+Conductor 15 6
+
+Conductor 16 6
+
+Conductor 17 6
+
+Conductor 18 6
+
+Conductor 19 6
+
+Conductor 20 6
+
+Conductor 21 6
+
+Conductor 22 6
+
+Conductor 23 6
+
+Conductor 24 6
+
+Conductor 25 6
+
+Conductor 26 6
+
+Conductor 26 7
+Conductor 26 8
+Conductor 26 9
+Conductor 26 10
