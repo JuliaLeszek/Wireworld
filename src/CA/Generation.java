@@ -82,6 +82,14 @@ public class Generation {
         }
     }
 
+    /* Zwracają wymiary generacji*/
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth () {
+        return width;
+    }
 
 
 }
