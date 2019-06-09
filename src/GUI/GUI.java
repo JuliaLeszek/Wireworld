@@ -26,16 +26,15 @@ public class GUI extends JFrame {
     private boolean stopped;
     private int defaultSteps;
     private Board board;
+    private final JFileChooser fileChooser = new JFileChooser();
 
 
     public GUI() {
 
-        File out = new File("koncowaGeneracja.txt");
-        File in = new File("wsad.txt");
         stopped = true;
         defaultSteps = 10;
 
-        Generation gen = Loading.load(in);
+        Generation gen = new Generation(75, 75);
         automaton = new Automaton(gen);
         generationCopy = gen;
         automaton.setGeneration(gen);
@@ -45,7 +44,6 @@ public class GUI extends JFrame {
         initializeMenu();
         initializeBoard();
 
-        Saving.save(gen, out);
     }
 
     private void initializeWindow() {
@@ -125,6 +123,16 @@ public class GUI extends JFrame {
         loadBtn.setForeground(Color.white);
         loadBtn.setBounds(650, 550, btnWidth, btnHeight);
         loadBtn.setFocusPainted(false);
+        loadBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                stopped= true;
+                if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    File picked = fileChooser.getSelectedFile();
+                    automaton.setGeneration(Loading.load(picked));
+                    refreshBoard();
+                }
+            }
+        });
         add(loadBtn);
 
         /*przycisk zapisz*/
@@ -133,6 +141,16 @@ public class GUI extends JFrame {
         saveBtn.setForeground(Color.white);
         saveBtn.setBounds(760, 550, btnWidth, btnHeight);
         saveBtn.setFocusPainted(false);
+        saveBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stopped = true;
+                if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    File save = fileChooser.getSelectedFile();
+                    Saving.save(automaton.getGeneration(), save);
+                }
+            }
+        });
         add(saveBtn);
 
         /*liczba krokow*/

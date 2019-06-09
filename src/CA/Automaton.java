@@ -10,14 +10,14 @@ public class Automaton {
     public Automaton() {
         current = new Generation(75, 75);
         next = null;
-        n = 10;
+        n = 30;
     }
 
     /*Konstruktor automatu*/
     public Automaton(Generation generation) {
         current = generation;
         next = null;
-        n = 10;
+        n = 30;
     }
 
     /*Tworzenie kolejnej generacji*/
