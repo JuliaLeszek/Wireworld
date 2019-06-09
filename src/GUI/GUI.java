@@ -32,12 +32,12 @@ public class GUI extends JFrame {
     public GUI() {
 
         stopped = true;
-        defaultSteps = 10;
+        defaultSteps = 1000;
 
         Generation gen = new Generation(75, 75);
         automaton = new Automaton(gen);
-        generationCopy = gen;
         automaton.setGeneration(gen);
+        automaton.setNumberOfSteps(defaultSteps);
 
 
         initializeWindow();
@@ -49,6 +49,7 @@ public class GUI extends JFrame {
     private void initializeWindow() {
         setSize(900, 700);
         setTitle("WireWorld - Julia Leszek");
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(true);
@@ -94,6 +95,8 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 automaton.nextGeneration();
+                //automaton.setNumberOfSteps(automaton.getNumberOfSteps()-1);
+                inputSteps.setText(String.valueOf(automaton.getNumberOfSteps()));
                 refreshBoard();
             }
         });
@@ -129,6 +132,7 @@ public class GUI extends JFrame {
                 if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     File picked = fileChooser.getSelectedFile();
                     automaton.setGeneration(Loading.load(picked));
+                    generationCopy = automaton.getGeneration();
                     refreshBoard();
                 }
             }
@@ -163,6 +167,13 @@ public class GUI extends JFrame {
         inputSteps.setBounds(820, 250, 40, 20);
         inputSteps.setText(String.valueOf(defaultSteps));
         inputSteps.setHorizontalAlignment(JTextField.CENTER);
+        inputSteps.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                automaton.setNumberOfSteps(Long.parseLong(inputSteps.getText()));
+            }
+        });
+
         add(inputSteps);
     }
 
@@ -180,7 +191,7 @@ public class GUI extends JFrame {
                         refreshBoard();
 
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(750);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                         }

@@ -1,0 +1,48 @@
+50 50
+Conductor 20 20
+Conductor 20 21
+Conductor 20 22
+Conductor 20 23
+
+Head 20 24
+Tail 20 25
+
+Conductor 20 26
+
+Conductor 20 27
+
+Conductor 20 28
+
+Conductor 20 29
+
+Conductor 20 30
+Conductor 21 30
+Conductor 22 30
+
+Conductor 23 30
+Conductor 24 30
+Conductor 25 30
+Conductor 26 30
+Conductor 27 30
+Conductor 28 30
+Conductor 29 30
+Conductor 30 30
+Conductor 30 29
+Conductor 30 28
+Conductor 30 27
+Conductor 30 26
+Conductor 30 25
+Conductor 30 24
+Conductor 30 23
+Conductor 30 22
+Conductor 30 21
+Conductor 30 20
+Conductor 29 20
+Conductor 28 20
+Conductor 27 20
+Conductor 26 20
+Conductor 25 20
+Conductor 24 20
+Conductor 23 20
+Conductor 22 20
+Conductor 21 20

@@ -1,4 +1,4 @@
-75 75
+30 30
 Conductor 6 6
 
 Conductor 7 6
