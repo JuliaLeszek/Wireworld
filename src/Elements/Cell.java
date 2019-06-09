@@ -4,6 +4,8 @@ import CA.Generation;
 import States.Isolator;
 import States.State;
 
+import java.awt.*;
+
 public class Cell implements Element {
 
     private State state;
@@ -41,5 +43,9 @@ public class Cell implements Element {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public Color getColor () {
+        return state.getColor();
     }
 }

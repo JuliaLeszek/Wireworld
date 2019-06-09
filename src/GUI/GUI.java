@@ -25,7 +25,7 @@ public class GUI extends JFrame {
     private Generation generationCopy;
     private boolean stopped;
     private int defaultSteps;
-
+    private Board board;
 
 
     public GUI() {
@@ -35,7 +35,7 @@ public class GUI extends JFrame {
         stopped = true;
         defaultSteps = 10;
 
-        Generation gen =  Loading.load(in);
+        Generation gen = Loading.load(in);
         automaton = new Automaton(gen);
         generationCopy = gen;
         automaton.setGeneration(gen);
@@ -43,9 +43,9 @@ public class GUI extends JFrame {
 
         initializeWindow();
         initializeMenu();
+        initializeBoard();
 
         Saving.save(gen, out);
-
     }
 
     private void initializeWindow() {
@@ -96,7 +96,7 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 automaton.nextGeneration();
-
+                refreshBoard();
             }
         });
         add(nextGenBtn);
@@ -114,7 +114,7 @@ public class GUI extends JFrame {
                 automaton.setGeneration(generationCopy);
                 automaton.setNumberOfSteps(defaultSteps);
                 inputSteps.setText(String.valueOf(defaultSteps));
-
+                refreshBoard();
             }
         });
         add(resetBtn);
@@ -140,7 +140,7 @@ public class GUI extends JFrame {
         lblSteps.setBounds(650, 250, 100, 20);
         add(lblSteps);
 
-        /*liczba krokow pole tekstowe*/
+        /*liczba krokow- pole tekstowe*/
         inputSteps = new JTextField();
         inputSteps.setBounds(820, 250, 40, 20);
         inputSteps.setText(String.valueOf(defaultSteps));
@@ -159,6 +159,7 @@ public class GUI extends JFrame {
                     while (automaton.getNumberOfSteps() > 0 && !stopped) {
                         automaton.nextGeneration();
                         inputSteps.setText(String.valueOf(automaton.getNumberOfSteps()));
+                        refreshBoard();
 
                         try {
                             Thread.sleep(1000);
@@ -170,4 +171,15 @@ public class GUI extends JFrame {
             }.start();
         }
     }
+
+    private void initializeBoard() {
+        board = new Board(automaton.getGeneration());
+        board.setBounds(20, 40, 600, 600);
+        add(board);
     }
+
+    private void refreshBoard() {
+        board.setGeneration(automaton.getGeneration());
+        board.repaint();
+    }
+}
