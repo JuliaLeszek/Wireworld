@@ -33,8 +33,6 @@ public class Loading {
                         line = in.nextLine();
                         if (line.length() != 0) {
                             splited = line.split("\\s+"); // białe znaki
-                            System.out.println(line);
-                            //System.out.println(Integer.parseInt(splited[1], 10));
                             generation.setElementOnBoard(Integer.parseInt(splited[1], 10), Integer.parseInt(splited[2], 10), ElementFactory.buildElement(splited[0]));
                         }
                     } catch (NumberFormatException ex) {

@@ -48,5 +48,14 @@ public class Automaton {
         return current;
     }
 
+    /*Ustawianie liczby kroków*/
+    public void setNumberOfSteps(long n) {
+        this.n = n;
+    }
+
+    public long getNumberOfSteps() {
+        return n;
+    }
+
 
 }
