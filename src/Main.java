@@ -2,12 +2,21 @@ import CA.Automaton;
 import CA.Generation;
 import CA.Loading;
 import CA.Saving;
+import GUI.GUI;
 
+import javax.swing.*;
 import java.io.File;
 
 
 public class Main {
     public static void main(String[] args) {
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                final GUI frame = new GUI();
+            }
+        });
 
         File out = new File("koncowaGeneracja.txt");
         File in = new File("wsad.txt");
